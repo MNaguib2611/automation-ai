@@ -2,19 +2,21 @@ import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
 /**
- * Controller for the application, handling HTTP requests and responses.
+ * AppController is responsible for handling HTTP requests to the root URL.
  */
 @Controller()
 export class AppController {
   /**
-   * Initializes the controller with an instance of AppService.
-   * @param appService Instance of AppService, providing application functionality.
+   * Initializes a new instance of the AppController class.
+   *
+   * @param appService An instance of the AppService class, used to interact with the application.
    */
   constructor(private readonly appService: AppService) {}
 
   /**
-   * Handles a GET request to the root URL, returning 'Hello World!'.
-   * @returns The string 'Hello World!', representing a greeting.
+   * Retrieves and returns a greeting message.
+   *
+   * @returns A string containing the greeting message.
    */
   @Get()
   getHello(): string {
@@ -22,8 +24,9 @@ export class AppController {
   }
 
   /**
-   * Handles a GET request to the root URL, introducing the controller's author.
-   * @returns A message introducing the controller's creator.
+   * Retrieves and returns a brief introduction about the application author.
+   *
+   * @returns A string containing the introduction message.
    */
   @Get()
   introduceMySelf(): string {
