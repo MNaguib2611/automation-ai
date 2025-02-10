@@ -25,6 +25,9 @@ export const createMergeRequest = async () => {
     .toString()
     .trim();
 
+  // Push the current branch
+  await git.push('origin', currentBranch);
+
   // Check if there is already a merge request between the current branch and main
   const checkMergeRequestUrl = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/pulls?head=${process.env.GITHUB_OWNER}:${currentBranch}&base=main`;
   const checkResponse = await fetch(checkMergeRequestUrl, {
@@ -43,9 +46,6 @@ export const createMergeRequest = async () => {
     );
     return;
   }
-
-  // Push the current branch
-  await git.push('origin', currentBranch);
 
   // Generate Merge Request Message values
   const MergeRequestPrompt = `
