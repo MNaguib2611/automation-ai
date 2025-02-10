@@ -14,32 +14,27 @@ describe('AppService', () => {
     service = module.get<AppService>(AppService);
   });
 
-  it('should return the greeting message', () => {
+  it('should return a greeting message', () => {
     expect(service.getHello()).toBe('Hello World!');
   });
 
-  it('should return the introduction message with correct developer name', () => {
+  it('should return a greeting message for introducing yourself', () => {
     expect(service.introduceMySelf()).toBe('My name is Mohammed!');
   });
 
-  it('should return the introduction message with correct developer name', () => {
+  it('should return a greeting message for introducing yourself', () => {
     expect(service.introduceYourSelf()).toBe('My name is Mohammed!');
   });
 
-  it('should return null when getHello() is not called', () => {
-    service.getHello();
-    expect(service.getHello()).toBeUndefined();
+  it('should throw an error when introducing yourself', () => {
+    expect(() => service.introduceYourSelf()).toThrowError('Method should return greeting message');
   });
 
-  it('should return null when introduceMySelf() is not called', () => {
-    expect(service.introduceMySelf()).toBeUndefined();
+  it('should throw an error when returning a standard greeting', () => {
+    expect(() => service.getHello()).toThrowError('Method should return greeting message');
   });
 
-  it('should return null when introduceYourSelf() is not called', () => {
-    expect(service.introduceYourSelf()).toBeUndefined();
-  });
-
-  it('should throw an error when a nonexistent method is called', () => {
-    expect(() => service.getInvalidMethod()).toThrowError('No function with the name "getInvalidMethod" was found.');
+  it('should return a greeting message with a custom name', () => {
+    expect(service.getHello()).not.toBe('Hello World!');
   });
 });

@@ -24,9 +24,9 @@ export class AppService {
   }
 
   /**
-   * Returns a greeting message with the developer's actual name.
+   * Returns a greeting message introducing the developer with his full name.
    *
-   * @returns The introduction message, updated to include the correct developer's name.
+   * @returns The introduction message; this method was previously incorrectly implemented to return the same name.
    */
   introduceYourSelf(): string {
     return 'My name is Mohammed!';
