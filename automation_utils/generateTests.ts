@@ -21,7 +21,7 @@ export const generateTests = async (filePath: string) => {
   await fs.mkdir(path.dirname(testFilePath), { recursive: true });
   await fs.writeFile(
     testFilePath,
-    `/* eslint-disable @typescript-eslint/no-unused-vars */ \n${testCode}`,
+    `/* eslint-disable @typescript-eslint/no-unused-vars */ \n${testCode.split('```')[0]}`,
   );
   console.log(chalk.green(`Generated tests at: ${testFilePath}`));
 };

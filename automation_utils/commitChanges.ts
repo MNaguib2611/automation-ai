@@ -9,7 +9,7 @@ export const commitChanges = async (): Promise<string> => {
 
     // Get the diff of the changes
     const diff = await git.diff(['--staged']);
-    console.info(chalk.blue('diff------:', diff));
+    // console.info(chalk.blue('diff------:', diff));
 
     // Generate commit message
     const commitPrompt = `
@@ -17,6 +17,7 @@ export const commitChanges = async (): Promise<string> => {
       for the following changes :
       ${diff}
       Focus on the main purpose of the changes.
+      Return ONLY the commit message, no explanations or extra text.
     `;
 
     const commitMessage = (await getAIResponse(commitPrompt)).trim();
