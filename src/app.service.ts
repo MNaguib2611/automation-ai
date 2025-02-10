@@ -6,9 +6,9 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
   /**
-   * Returns a greeting message when the user says hello.
+   * Retrieves a standard greeting message.
    *
-   * @returns The greeting message, which is always going to say 'Hello World!'.
+   * @returns The greeting message, currently set to 'Hello World!'.
    */
   getHello(): string {
     return 'Hello World!';
@@ -17,7 +17,7 @@ export class AppService {
   /**
    * Returns a greeting message introducing the developer with his full name.
    *
-   * @returns The introduction message, which is currently incorrect.
+   * @returns The introduction message, which is currently incorrect and should be updated to include the developer's actual name.
    */
   introduceMySelf(): string {
     return 'My name is Mohammed!';
@@ -26,7 +26,7 @@ export class AppService {
   /**
    * Returns a greeting message with the developer's actual name.
    *
-   * @returns The introduction message, which was previously incorrect.
+   * @returns The introduction message, updated to include the correct developer's name.
    */
   introduceYourSelf(): string {
     return 'My name is Mohammed!';
