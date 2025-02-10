@@ -22,6 +22,69 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+# Automation Project
+
+This project automates various tasks such as linting, adding code comments, generating tests, committing changes, and creating merge requests. It uses a file watcher to monitor changes in the `src` directory and triggers the automation pipeline accordingly.
+
+## Features
+
+- **Linting**: Automatically lints all TypeScript files in the project.
+- **Code Comments**: Adds comments to the code.
+- **Test Generation**: Generates tests for the code.
+- **Git Commit**: Commits changes to the repository.
+- **Merge Request**: Creates a merge request.
+
+## Setup
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/MNaguib2611/automation-ai.git
+   cd automation-ai
+   ```
+
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+3. Create a `.env` file in the project root and add the following environment variables:
+   ```properties
+   GITHUB_TOKEN=your_github_token
+   GENERATE_COMMENTS=true
+   GENERATE_TESTS=true
+   COMMIT_CHANGES=true
+   MERGE_REQUEST=true
+   GITHUB_OWNER=your_github_username
+   GITHUB_REPO=your_repository_name
+   ```
+
+## Usage
+
+1. Start the automation watcher:
+   ```sh
+   npx ts-node automation.ts 
+   ```
+
+2. The watcher will monitor the `src` directory for changes and trigger the automation pipeline.
+
+## Environment Variables
+
+- `GITHUB_TOKEN`: Your GitHub token for authentication.
+- `GENERATE_COMMENTS`: Set to `true` to enable code comment generation.
+- `GENERATE_TESTS`: Set to `true` to enable test generation.
+- `COMMIT_CHANGES`: Set to `true` to enable committing changes.
+- `MERGE_REQUEST`: Set to `true` to enable creating merge requests.
+- `GITHUB_OWNER`: Your GitHub username.
+- `GITHUB_REPO`: Your GitHub repository name.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.

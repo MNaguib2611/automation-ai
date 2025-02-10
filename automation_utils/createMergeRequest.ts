@@ -41,7 +41,7 @@ export const createMergeRequest = async () => {
   if (existingMergeRequests.length > 0) {
     console.log(
       chalk.yellow(
-        `Merge request already exists for branch ${currentBranch} to main.`,
+        `Merge request already exists for branch ${currentBranch} to main.Stopped after pushing code changes`,
       ),
     );
     return;
