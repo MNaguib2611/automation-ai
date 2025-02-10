@@ -3,6 +3,8 @@ import * as dotenv from 'dotenv';
 import simpleGit from 'simple-git';
 const git = simpleGit();
 import { execSync } from 'child_process';
+import e from 'express';
+import chalk from 'chalk';
 
 dotenv.config();
 
@@ -66,10 +68,13 @@ export const createMergeRequest = async () => {
       headers: headers,
       body: JSON.stringify(body),
     });
-    console.log('response:', response);
 
     if (!response.ok) {
-      throw new Error(`Failed to create merge request: ${response.statusText}`);
+      throw new Error(
+        `Failed to create merge request: ${response.statusText} from branch ${currentBranch} to branch main`,
+      );
+    } else {
+      console.log(chalk.green(`Created merge request : ${params.title}`));
     }
 
     const data = (await response.json()) as GitHubPullRequestResponse;
