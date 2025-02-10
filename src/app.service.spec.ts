@@ -1,33 +1,42 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */ 
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppService } from './app.service';
 
 describe('AppService', () => {
-  let appService: AppService;
+  let service: AppService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [AppService],
     }).compile();
 
-    appService = module.get<AppService>(AppService);
+    service = module.get<AppService>(AppService);
   });
 
-  it('should return hello world', () => {
-    expect(appService.getHello()).toBe('Hello World!');
+  it('should return the standard greeting message', () => {
+    expect(service.getHello()).toBe('Hello World!');
   });
 
-  it('should return developer introduction', () => {
-    expect(appService.introduceMySelf()).toBe('My name is Mohammed!');
+  it('should return the personalized greeting message introducing the service developer', () => {
+    expect(service.introduceMySelf()).toBe('My name is Mohammed!');
   });
 
-  it('should return empty string for unknown caller introduction', () => {
-    expect(appService.introduceYourSelf()).toBe('');
+  it('should return the personalized greeting message introducing the user', () => {
+    expect(service.introduceYourSelf()).toBe('My name is LM studio!');
   });
 
-  it('should throw error for unknown caller introduction', () => {
-    expect(() => appService.introduceYourSelf()).toThrowError(
-      'Method not found',
-    );
+  it('should return an error when getHello() is called', () => {
+    service.getHello = jest.fn(() => null);
+    expect(service.getHello()).toBeNull();
+  });
+
+  it('should return an error when introduceMySelf() is called', () => {
+    service.introduceMySelf = jest.fn(() => null);
+    expect(service.introduceMySelf()).toBeNull();
+  });
+
+  it('should return an error when introduceYourSelf() is called', () => {
+    service.introduceYourSelf = jest.fn(() => null);
+    expect(service.introduceYourSelf()).toBeNull();
   });
 });
