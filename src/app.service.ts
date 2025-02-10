@@ -1,32 +1,26 @@
 import { Injectable } from '@nestjs/common';
 
 /**
- * The AppService class provides methods for common greetings.
+ * AppService is an injectable class in a NestJS application, responsible for providing the main application service.
  */
 @Injectable()
 export class AppService {
   /**
-   * Returns a standard greeting message.
-   *
-   * @returns The greeting message.
+   * Returns a greeting message, "Hello World!".
    */
   getHello(): string {
     return 'Hello World!';
   }
 
   /**
-   * Returns a personalized greeting message introducing the service developer.
-   *
-   * @returns The personalized greeting message.
+   * Returns a personalized message with the developer's name.
    */
   introduceMySelf(): string {
     return 'My name is Mohammed!';
   }
 
   /**
-   * Returns a personalized greeting message introducing the user.
-   *
-   * @returns The personalized greeting message.
+   * Returns a personalized message with the developer's name.
    */
   introduceYourSelf(): string {
     return 'My name is LM studio!';
