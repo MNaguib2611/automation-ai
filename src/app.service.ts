@@ -8,7 +8,7 @@ export class AppService {
   /**
    * Returns a greeting message when the user says hello.
    *
-   * @returns The greeting message, which is always 'Hello World!'.
+   * @returns The greeting message, which is always going to say 'Hello World!'.
    */
   getHello(): string {
     return 'Hello World!';

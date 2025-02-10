@@ -5,7 +5,8 @@ import chalk from 'chalk';
 
 export const commitChanges = async (): Promise<string> => {
   try {
-    await git.add('./src');
+    await git.add('.');
+    // await git.add('./src');
 
     // Get the diff of the changes
     const diff = await git.diff(['--staged']);

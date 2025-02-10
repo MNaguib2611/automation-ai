@@ -3,7 +3,6 @@ import * as dotenv from 'dotenv';
 import simpleGit from 'simple-git';
 const git = simpleGit();
 import { execSync } from 'child_process';
-import e from 'express';
 import chalk from 'chalk';
 
 dotenv.config();
@@ -25,6 +24,25 @@ export const createMergeRequest = async () => {
   const currentBranch = execSync('git rev-parse --abbrev-ref HEAD')
     .toString()
     .trim();
+
+  // Check if there is already a merge request between the current branch and main
+  const checkMergeRequestUrl = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/pulls?head=${process.env.GITHUB_OWNER}:${currentBranch}&base=main`;
+  const checkResponse = await fetch(checkMergeRequestUrl, {
+    headers: {
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      Accept: 'application/vnd.github+json',
+    },
+  });
+
+  const existingMergeRequests = await checkResponse.json();
+  if (existingMergeRequests.length > 0) {
+    console.log(
+      chalk.yellow(
+        `Merge request already exists for branch ${currentBranch} to main.`,
+      ),
+    );
+    return;
+  }
 
   // Push the current branch
   await git.push('origin', currentBranch);
